@@ -1,0 +1,35 @@
+.jumbotron {
+  text-align: center;
+  padding: 30px 60px;
+  background-color: #E0E0E0;
+}
+.title1_style {
+  margin: 40px 15px 0 0;
+  text-align: center;
+  font-family: 'Open Sans', arial;
+  font-size: 38px;
+  color: #555;
+  font-weight: 300;
+}
+.logo {
+  width: 120px;
+  height: 120px;
+}
+.para_style1 {
+  margin: 0 0 10px;
+  color: #555;
+  font-size: 20px;
+  text-align: center;
+}
+.btn {
+  font-size: 18px;
+}
+.form-style {
+  margin: 15px;
+}
+a:visited:not(.btn) {
+  color: #fff;
+}
+a:hover {
+   text-decoration: none;
+}
