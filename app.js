@@ -14,11 +14,11 @@ var localOauth = require('./passport');
 var app = express();
 
 
-mongoose.connect('mongodb://localhost/psprtdb');
+mongoose.connect('mongodb://localhost/travelview');
 
 app.locals.pretty= true;
 app.set('views', __dirname + '/views');
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/public'));
 app.use(logger('dev'));
