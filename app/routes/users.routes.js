@@ -16,6 +16,7 @@ var routes = function(passport){
 
   //GET login page
   router.get('/login', function(req, res){
+    console.log('login');
     res.render('login.ejs', { error: req.flash('loginError') });
   });
 
