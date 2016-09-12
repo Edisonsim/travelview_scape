@@ -1,43 +1,21 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var mongoose = require('mongoose');
-var passport = require('passport');
-var sessions = require('client-sessions');
-var logger = require('morgan');
+var express = require('./config/express');
+var mongoose = require('./config/mongoose');
 var flash = require('connect-flash');
 
-var routes = require('./routes/users.routes')(passport);
-var localOauth = require('./passport');
 
-
+var db = mongoose();
 var app = express();
 
 
-mongoose.connect('mongodb://localhost/travelview');
 
-app.locals.pretty= true;
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
 
-app.use(express.static(__dirname + '/public'));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(sessions( {
-  cookieName:     'session',
-  secret:         '$sjsjsjel',
-  duration:       60*60*1000,
-  activeDuration: 5*60*1000
-}));
-app.use(flash());
-// Passport configuration
-app.use(passport.initialize());
-app.use(passport.session());
-localOauth(passport);
 
-//routes
-app.use('/', routes);
 
-app.listen(3000);
+
+app.set('port', (process.env.PORT || 7000));
+
+app.listen(app.get('port'), function() {
+  console.log('My express server is running at localhost', app.get('port'));
+});
+
+module.exports = app;

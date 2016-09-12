@@ -1,58 +1,38 @@
+module.exports = function(app) {
 var express = require('express');
-var router = express.Router();
+var passport = require('passport');
+var usersController = require('../controllers/users.controller');
 
-var isAuthenticated = function (req, res, next) {
+
+function isAuthenticated(req, res, next) {
   if (req.isAuthenticated())
     return next();
   res.redirect('/');
 };
 
-var routes = function(passport){
-
   // GET index page.
-  router.get('/', function(req, res) {
-    res.render('index.ejs');
-  });
+  // app.route('/')
+  // .get(staticController.index);
+  //
+  // function(req, res) {
+  //   res.render('index.ejs');
+  // });
 
-  //GET login page
-  router.get('/login', function(req, res){
-    console.log('login');
-    res.render('login.ejs', { error: req.flash('loginError') });
-  });
-
-  //Handle login POST
-  router.post('/login', passport.authenticate('login',{
-    successRedirect: '/dashboard',
-    failureRedirect: '/login',
-    failureFlash: true
-  }));
+  app.route('/login')
+    .get(usersController.getLogin)
+    .post(usersController.postLogin);
 
   // GET registration page
-  router.get('/register', function(req, res){
-    res.render('register.ejs', { error: req.flash('registerError') });
-  });
-
-  // Handle registration POST
-  router.post('/register', passport.authenticate('register', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/register',
-    failureFlash: true
-  }));
-
+  app.route('/register')
+  .get(usersController.register)
+    .post(usersController.postRegister);
 
   // GET dashboard page
-  router.get('/dashboard', isAuthenticated, function(req, res){
-    res.render('dashboard.ejs', { user: req.user });
-  });
+  app.route('/dashboard')
+  .get(usersController.dashboard)
 
   /* Handle Logout */
-  router.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
-  });
+  app.route('/logout')
+  .get(usersController.logout)
 
-  return router;
-
-};
-
-module.exports = routes;
+  };
