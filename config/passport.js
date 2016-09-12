@@ -1,4 +1,4 @@
-var User = require('./dbmodel');
+var User = require('../app/models/user.model');
 var LocalStrategy   = require('passport-local').Strategy;
 var bcrypt = require('bcryptjs');
 

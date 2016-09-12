@@ -7,7 +7,7 @@ var sessions = require('client-sessions');
 var logger = require('morgan');
 var flash = require('connect-flash');
 
-var routes = require('./routes/routes')(passport);
+var routes = require('./routes/users.routes')(passport);
 var localOauth = require('./passport');
 
 
