@@ -1,5 +1,4 @@
-var user = require('mongoose').model('User'),
-  passport = require('passport');
+var passport = require('passport');
 
   function getLogin(req, res) {
     console.log('login');

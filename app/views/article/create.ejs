@@ -1,0 +1,31 @@
+<h1>Create Article</h1>
+
+<form role="form" method="post" enctype="multipart/form-data" class="form-style">
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" name="title" required="required" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label>Description</label>
+        <textarea name="descriptions" required="required" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Image</label>
+        <input type="file" name="image" required="required" class="form-control"/>
+    </div>
+
+    <div class="form-control">
+        <select name="place" required="required">
+            <option value="">Select Place</option>
+            <% places.forEach(function(place) { %>
+            <option value="<%= place._id %>"><%= place.address %></option>
+            <% }); %>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Publish</button>
+    </div>
+</form>

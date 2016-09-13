@@ -1,0 +1,31 @@
+<h1>Pending for Approval</h1>
+<% include ../layout/menu %>
+
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Approve</th>
+        <th>Deny</th>
+    </tr>
+    <% articles.forEach(function(article) { %>
+    <tr>
+        <td>
+            <%= article.title %>
+        </td>
+        <td>
+            <form method="post">
+                <input type="hidden" name="id" value="<%= article._id %>" />
+                <input type="hidden" name="status" value="APPROVED" />
+                <input type="submit" value="Approve" />
+            </form>
+        </td>
+        <td>
+            <form method="post">
+                <input type="hidden" name="id" value="<%= article._id %>" />
+                <input type="hidden" name="status" value="DENY" />
+                <input type="submit" value="Deny" />
+            </form>
+        </td>
+    </tr>
+    <% }); %>
+</table>

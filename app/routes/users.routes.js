@@ -10,14 +10,6 @@ function isAuthenticated(req, res, next) {
   res.redirect('/');
 };
 
-  // GET index page.
-  // app.route('/')
-  // .get(staticController.index);
-  //
-  // function(req, res) {
-  //   res.render('index.ejs');
-  // });
-
   app.route('/login')
     .get(usersController.getLogin)
     .post(usersController.postLogin);

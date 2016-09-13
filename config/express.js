@@ -73,10 +73,11 @@ module.exports = function() {
   });
 
 
-  // require('../app/routes/index.server.routes')(app);
+  require('../app/routes/index.server.routes')(app);
   require('../app/routes/users.routes')(app);
   // require('../app/routes/places.routes')(app);
-  // require('../app/routes/articles.routes')(app);
+  require('../app/routes/articles.routes')(app);
+  // app.use('/article', require('../app/routes/articles.routes')(passport));
 
   return app;
 
