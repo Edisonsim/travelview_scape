@@ -10,6 +10,9 @@ function isAuthenticated(req, res, next) {
   res.redirect('/');
 };
 
+app.route('/loginRegister')
+  .get(usersController.getLoginRegisterPage)
+
   app.route('/login')
     .get(usersController.getLogin)
     .post(usersController.postLogin);

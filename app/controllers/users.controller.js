@@ -1,5 +1,8 @@
 var passport = require('passport');
 
+function getLoginRegisterPage(req, res) {
+  res.render('user/loginRegister');
+}
   function getLogin(req, res) {
     console.log('login');
     res.render('user/login', { error: req.flash('loginError') }
@@ -7,8 +10,8 @@ var passport = require('passport');
 
   function postLogin(req, res) {
     var loginStrategy = passport.authenticate('local-login',{
-      successRedirect: 'user/dashboard',
-      failureRedirect: 'user/login',
+      successRedirect: '/dashboard',
+      failureRedirect: '/login',
       failureFlash: true
     });
     return loginStrategy(req, res);
@@ -22,8 +25,8 @@ var passport = require('passport');
   function postRegister(req, res) {
     console.log("entered the post register controller");
     var registerStrategy = passport.authenticate('local-signup', {
-      successRedirect: 'user/dashboard',
-      failureRedirect: 'user/register',
+      successRedirect: '/dashboard',
+      failureRedirect: '/register',
       failureFlash: true
     })
     return registerStrategy(req, res);
@@ -39,6 +42,7 @@ var passport = require('passport');
   }
 
 module.exports = {
+  getLoginRegisterPage: getLoginRegisterPage,
   getLogin: getLogin,
   postLogin: postLogin,
   register: register,

@@ -34,36 +34,41 @@
                 <li class="active">
                     <a href="/">Home</a>
                 </li>
-                <li>
-                    <a href="/place/create">Place</a>
-                </li>
-                <li>
-                    <a href="/index/contact">Contact Us</a>
-                </li>
-
                 <% if(currentUser) { %>
                     <li>
                         <a href="/article/create">Create Article</a>
                     </li>
-                    <li>
-                        <a href="/dashboard">Dashboard</a>
-                    </li>
-
-                    <li>
-                        <a href="/logout">Logout</a>
-                    </li>
                     <% if(currentUser.admin) { %>
                         <li>
-                            <a href="/article/approval">Approve Article</a>
+                            <a href="/approval">Approve Article</a>
                         </li>
+                        <li>
+                            <a href="/place/create">Create Place</a>
+                        </li>
+                        <% } %>
+                        <% } %>
+                                <li>
+                                    <a href="/place">Place</a>
+                                </li>
+                                <li>
+                                    <a href="/contact">Contact Us</a>
+                                </li>
 
-                        <% } else { %>
-                            <li>
-                                <a href="/static_pages/index">Login</a>``
-                            </li>
-                            <% } %>
-                                <% } %>
+                                <% if(currentUser) { %>
 
+                                    <li>
+                                        <a href="/dashboard">Dashboard</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/logout">Logout</a>
+                                    </li>
+                                    <% } else { %>
+
+                                        <li>
+                                            <a href="/loginRegister">Login/Register</a>
+                                        </li>
+                                          <% } %>
             </ul>
         </div>
         <!--/.nav-collapse -->

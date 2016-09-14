@@ -47,13 +47,13 @@ module.exports = function() {
   // If your application uses persistent login sessions, passport.session()
   app.use(passport.session());
   app.use(flash());
-  app.use(methodOverride(function(request, response) {
-    if(request.body && typeof request.body === 'object' && '_method' in request.body) {
-      var method = request.body._method;
-      delete request.body._method;
-      return method;
-    }
-  }));
+  // app.use(methodOverride(function(request, response) {
+  //   if(request.body && typeof request.body === 'object' && '_method' in request.body) {
+  //     var method = request.body._method;
+  //     delete request.body._method;
+  //     return method;
+  //   }
+  // }));
 
   // Express settings
   app.set('views', './app/views');

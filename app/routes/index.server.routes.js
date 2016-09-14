@@ -9,17 +9,6 @@ var indexsController = require('../controllers/indexs.controller');
 //     res.redirect('/user/login');
 // };
 
-    // // all except login
-    // app.all('/', function (req, res, next) {
-    //   console.log('authentication guard.');
-    //   var login = (req.user) ? true : false;
-    //   if (login) {
-    //     return next();
-    //   }
-    //   res.redirect('/user/login');
-    //   // next(); // pass control to the next handler
-    // });
-
     // GET index page.
     app.route('/')
     .get(indexsController.getIndexPage)

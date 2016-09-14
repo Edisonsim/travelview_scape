@@ -1,28 +1,30 @@
 var Place = require('mongoose').model('Place');
+var Article = require('mongoose').model('Article');
+
 
 function createPlace(req, res) {
     var login = (req.user) ? true : false;
 
-    var places;
-    Places.find({}, function (err, data) {
-        places = data;
+    Place.find({}, function (err, data) {
+      res.render('place/create', {
+          place: data,
+          login: login
+      })
     });
 
-    res.render('place/create', {
-        places: places,
-        login: login
-    });
+    ;
 }
 
 function postPlace(req, res) {
     var login = (req.user) ? true : false;
+    console.log(req.user);
 
-    var place = new Places();
+    var place = new Place();
     place.address = req.body.address;
     place.descriptions = req.body.descriptions;
     place.country = req.body.country;
     place.user = req.user._id;
-    place.save(function (err) {
+    place.save(function (err, place) {
         if (err) {
             console.log(err);
             res.status(500).send(err.message);
@@ -30,13 +32,12 @@ function postPlace(req, res) {
             res.redirect('/place');
         }
     });
-    return app;
 }
 
 function getPlace(req, res) {
         var login = (req.user) ? req.user : false;
 
-        Places.find({}, function (err, place) {
+        Place.find({}, function (err, place) {
             if (err) {
                 res.status(500).send(err.message);
             } else {
