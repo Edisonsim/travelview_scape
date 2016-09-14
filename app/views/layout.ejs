@@ -2,50 +2,77 @@
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 
 <body>
-    <div class="container">
-    <%- body %>
+
+    <% if (typeof message != 'undefined') { %>
+        <div class="alert alert-danger">
+            <%= message %>
+        </div>
+        <% } %>
+
+            <div class="container">
+                <%- body %>
 
 
-  </div>
+            </div>
 </body>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+    <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Travelview</a>
+            <a class="navbar-brand" href="#">Travelview</a>
         </div>
 
         <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <% if(true) { %>
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/article/create">Create Article</a></li>
-            <li><a href="/places">Places</a></li>
-            <li><a href="/contact">Contact Us</a></li>
-            <li><a href="/static_pages/index">Sign in/Join</a></li>
-            <% } %>
-              <% if(true) { %>
-            <li><a href="/user/dashboard">Dashboard</a></li>
-            <li><a href="/user/logout">Logout</a>
-                <% } else { %>
-            <li><a href="/user/login">Login</a></li>
-            <a href="/user/register">Register</a>
-              <% } %>
-          </ul>
+            <ul class="nav navbar-nav">
+
+                <li class="active">
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/place/create">Place</a>
+                </li>
+                <li>
+                    <a href="/index/contact">Contact Us</a>
+                </li>
+
+                <% if(currentUser) { %>
+                    <li>
+                        <a href="/article/create">Create Article</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard">Dashboard</a>
+                    </li>
+
+                    <li>
+                        <a href="/logout">Logout</a>
+                    </li>
+                    <% if(currentUser.admin) { %>
+                        <li>
+                            <a href="/article/approval">Approve Article</a>
+                        </li>
+
+                        <% } else { %>
+                            <li>
+                                <a href="/static_pages/index">Login</a>``
+                            </li>
+                            <% } %>
+                                <% } %>
+
+            </ul>
         </div>
         <!--/.nav-collapse -->
-      </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- <div class="container"> -->
+<!-- <div class="container"> -->
 
-      <!-- <div class="starter-template">
+<!-- <div class="starter-template">
         <h1>Bootstrap starter template</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
       </div>

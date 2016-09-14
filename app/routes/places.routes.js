@@ -1,7 +1,7 @@
 module.exports = function(app) {
   var express = require('express');
-  var Places = require('../models/Places');
-  var Article = require('../models/Article');
+  var Places = require('../models/place.model');
+  var Article = require('../models/article.model');
   var mongoose = require('mongoose');
 
   var placesController = require('../controllers/places.controller');
@@ -23,5 +23,6 @@ var routes = function (passport) {
   placesController.postPlace);
 
 }
-
+    app.route('/')
+    .get(placesController.getPlace);
 };

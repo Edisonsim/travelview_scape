@@ -5,7 +5,7 @@ var multer = require('multer');
 var mongoose = require('mongoose');
 var articlesController = require('../controllers/articles.controller');
 
-var filename = "";
+
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, path.join(__dirname, '../public/uploads/article-covers/'));

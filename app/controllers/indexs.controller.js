@@ -1,3 +1,5 @@
+var User = require('mongoose').model('User');
+
   function getIndexPage(req, res) {
       var login = (req.user) ? true : false;
       res.render('index/index', {

@@ -33,7 +33,30 @@ function postPlace(req, res) {
     return app;
 }
 
+function getPlace(req, res) {
+        var login = (req.user) ? req.user : false;
+
+        Places.find({}, function (err, place) {
+            if (err) {
+                res.status(500).send(err.message);
+            } else {
+                Article.find({status: "APPROVED"}, function (err, articles) {
+                    if (err) {
+                        res.status(500).send(err.message);
+                    } else {
+                        res.render('place/index', {
+                            places: place,
+                            articles: articles,
+                            login: login
+                        });
+                    }
+                });
+            }
+        });
+    }
+
 module.exports = {
   createPlace: createPlace,
-  postPlace: post:place
+  postPlace: postPlace,
+  getPlace: getPlace
 }

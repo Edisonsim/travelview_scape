@@ -1,0 +1,20 @@
+<h1>Places with Articles</h1>
+<% include ../place/index %>
+
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script>
+    $places = <%-JSON.stringify(places)%>;
+            $articles = <%-JSON.stringify(articles)%>;
+            $.each($places, function (i, item) {
+                document.write("<h2>" + item.address + "</h2>");
+                $articleloop = $($articles).filter(function (i, n) {
+                    return n.place === item._id
+                });
+                $.each($articleloop, function (i, item) {
+                    document.write(item.title + "<br />");
+                    document.write("<img src=" + item.imageUrl + " width=\"100\" /><br />");
+                    document.write("<p>" + item.descriptions + "</p>");
+                    document.write("<hr />");
+                });
+            });
+</script>

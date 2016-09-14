@@ -1,6 +1,12 @@
 var User = require('mongoose').model('User');
 var Article = require('mongoose').model('Article');
 var Place = require('mongoose').model('Place');
+var multer = require('multer');
+var mongoose = require('mongoose');
+
+var filename = "";
+
+
 
 function getCreateArticle(req, res) {
       var login = (req.user) ? true : false;
@@ -10,7 +16,7 @@ function getCreateArticle(req, res) {
           } else {
               res.render('article/create', {
                   places: data,
-                  login: login
+                  login: login, message: req.flash('message')
               });
           }
       });
@@ -23,12 +29,13 @@ function getCreateArticle(req, res) {
       article.imageUrl = "/uploads/article-covers/" + filename;
       article.place = req.body.place;
       article.user = req.user._id;
-      article.save(function (err) {
+      article.save(function (err, article) {
           if (err) {
               console.log(err);
               res.status(500).send(err.message);
           } else {
-              res.redirect('/article');
+            req.flash('message', `Article ${article.title} successfully created`);
+              res.redirect('/article/create');
           }
       });
   }
@@ -39,7 +46,8 @@ function getCreateArticle(req, res) {
           if (err) {
               res.status(500).send(err.message);
           } else {
-              res.render('article/approval', {
+            // console.log(res.json(data));
+              res.render('../views/article/approval', {
                   articles: data,
                   login: login
               });

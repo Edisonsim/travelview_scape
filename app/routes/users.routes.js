@@ -1,8 +1,8 @@
 module.exports = function(app) {
 var express = require('express');
 var passport = require('passport');
-var usersController = require('../controllers/users.controller');
 
+var usersController = require('../controllers/users.controller');
 
 function isAuthenticated(req, res, next) {
   if (req.isAuthenticated())
