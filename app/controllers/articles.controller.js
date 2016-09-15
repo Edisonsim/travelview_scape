@@ -62,7 +62,7 @@ function getCreateArticle(req, res) {
               if (err) {
                   res.status(500).send(err.message);
               } else {
-                  res.redirect('/article/approval')
+                  res.redirect('/approval')
               }
           });
       } else {

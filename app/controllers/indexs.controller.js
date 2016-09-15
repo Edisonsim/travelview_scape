@@ -1,4 +1,5 @@
 var User = require('mongoose').model('User');
+var mongoose = require('mongoose');
 
   function getIndexPage(req, res) {
       var login = (req.user) ? true : false;
@@ -9,7 +10,7 @@ var User = require('mongoose').model('User');
 
   function getIndexContact(req, res) {
       var login = (req.user) ? true : false;
-      res.render('index/contact', {
+      res.render('/contact', {
           login: login
       });
   }

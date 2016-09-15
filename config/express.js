@@ -39,7 +39,9 @@ module.exports = function() {
   app.use(session({
     saveUninitialized: true,
     resave: true,
-    secret: 'TRAVEL_VIEW-EXPRESS'
+    secret: 'TRAVEL_VIEW-EXPRESS',
+    duration: 60 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000
   }));
 
   // passport.initialize() middleware is required to initialize Passport.
