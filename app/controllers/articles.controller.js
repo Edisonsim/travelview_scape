@@ -26,7 +26,7 @@ function getCreateArticle(req, res) {
       var article = new Article();
       article.title = req.body.title;
       article.descriptions = req.body.descriptions;
-      article.imageUrl = "/uploads/article-covers/" + filename;
+      article.imageUrl = req.body.imageUrl;
       article.place = req.body.place;
       article.user = req.user._id;
       article.save(function (err, article) {
@@ -46,7 +46,6 @@ function getCreateArticle(req, res) {
           if (err) {
               res.status(500).send(err.message);
           } else {
-            // console.log(res.json(data));
               res.render('../views/article/approval', {
                   articles: data,
                   login: login

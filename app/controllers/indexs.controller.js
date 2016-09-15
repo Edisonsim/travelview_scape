@@ -10,7 +10,7 @@ var mongoose = require('mongoose');
 
   function getIndexContact(req, res) {
       var login = (req.user) ? true : false;
-      res.render('/contact', {
+      res.render('index/contact', {
           login: login
       });
   }
