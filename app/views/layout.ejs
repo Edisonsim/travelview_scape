@@ -1,86 +1,70 @@
 <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <link href="img/smallLogo.ico" rel="icon" type="image/x-icon" />
 
 <body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+              <a class="navbar-brand" href="/">TravelScape</a>
+          </div>
 
-    <% if (typeof message != 'undefined') { %>
-        <div class="alert alert-danger">
-            <%= message %>
-        </div>
-        <% } %>
+          <div id="navbar" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
 
-            <div class="container">
-                <%- body %>
+                  <li class="active">
+                      <a href="/">Home</a>
+                  </li>
+                  <% if(currentUser) { %>
+                      <li>
+                          <a href="/article/create">Create Article</a>
+                      </li>
+                      <% if(currentUser.admin) { %>
+                          <li>
+                              <a href="/approval">Approve Article</a>
+                          </li>
+                          <li>
+                              <a href="/place/create">Create Place</a>
+                          </li>
+                          <% } %>
+                          <% } %>
+                                  <li>
+                                      <a href="/place">Place</a>
+                                  </li>
+                                  <li>
+                                      <a href="/contact">Contact Us</a>
+                                  </li>
 
+                                  <% if(currentUser) { %>
 
-            </div>
-</body>
+                                      <li>
+                                          <a href="/dashboard">Dashboard</a>
+                                      </li>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-            <a class="navbar-brand" href="/">TravelScape</a>
-        </div>
+                                      <li>
+                                          <a href="/logout">Logout</a>
+                                      </li>
+                                      <% } else { %>
 
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-
-                <li class="active">
-                    <a href="/">Home</a>
-                </li>
-                <% if(currentUser) { %>
-                    <li>
-                        <a href="/article/create">Create Article</a>
-                    </li>
-                    <% if(currentUser.admin) { %>
-                        <li>
-                            <a href="/approval">Approve Article</a>
-                        </li>
-                        <li>
-                            <a href="/place/create">Create Place</a>
-                        </li>
-                        <% } %>
-                        <% } %>
-                                <li>
-                                    <a href="/place">Place</a>
-                                </li>
-                                <li>
-                                    <a href="/contact">Contact Us</a>
-                                </li>
-
-                                <% if(currentUser) { %>
-
-                                    <li>
-                                        <a href="/dashboard">Dashboard</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/logout">Logout</a>
-                                    </li>
-                                    <% } else { %>
-
-                                        <li>
-                                            <a href="/loginRegister">Login/Register</a>
-                                        </li>
-                                          <% } %>
-            </ul>
-        </div>
-        <!--/.nav-collapse -->
-    </div>
-</nav>
-
-<!-- <div class="container"> -->
-
-<!-- <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+                                          <li>
+                                              <a href="/loginRegister">Login/Register</a>
+                                          </li>
+                                            <% } %>
+              </ul>
+          </div>
+          <!--/.nav-collapse -->
       </div>
+  </nav>
 
-    </div> -->
+
+    <div class="container">
+        <%- body %>
+    </div>
+</body>

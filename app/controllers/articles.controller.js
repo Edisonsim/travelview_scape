@@ -34,7 +34,7 @@ function getCreateArticle(req, res) {
               console.log(err);
               res.status(500).send(err.message);
           } else {
-            req.flash('message', `Article ${article.title} successfully created`);
+            // req.flash('message', `Article ${article.title} successfully created`);
               res.redirect('/article/create');
           }
       });
