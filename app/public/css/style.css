@@ -44,9 +44,30 @@ a:hover {
 .row {
   height: 10px;
 }
-body {
+/*body {
   padding-top: 40px;
+}*/
+
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
 }
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
+
+
 /* Makes images fully responsive */
 
 .img-responsive,
@@ -66,15 +87,16 @@ body {
 }
 
 .carousel-caption {
-  background-color: rgba(0,0,0,.5);
+  background-color: #ffffff;
+  opacity: .7;
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 10;
   padding: 0 0 20px 25px;
-  color: #fff;
-  text-align: left;
+  color: black;
+  text-align: center;;
   font-size: 25px;
 }
 
