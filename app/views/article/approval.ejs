@@ -16,14 +16,14 @@
             <form method="post">
                 <input type="hidden" name="id" value="<%= article._id %>" />
                 <input type="hidden" name="status" value="APPROVED" />
-                <input type="submit" value="Approve" />
+                <input type="submit" value="Approve" class="btn btn-success" />
             </form>
         </td>
         <td>
             <form method="post">
                 <input type="hidden" name="id" value="<%= article._id %>" />
                 <input type="hidden" name="status" value="DENY" />
-                <input type="submit" value="Deny" />
+                <input type="submit" value="Deny" class="btn btn-danger" />
             </form>
         </td>
     </tr>
